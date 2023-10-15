@@ -20,5 +20,19 @@ namespace WebApplication1.Controllers
             var users = await _userService.GetUsersAsync();
             return Ok(users);
         }
+
+        [HttpGet("/user/{username}")]
+        public async Task<IActionResult> GetUserByUsername(string username)
+        {
+            var (user, errorMessage) = await _userService.GetUserByUsernameAsync(username);
+
+            if (user == null)
+            {
+                return NotFound(new { Message = errorMessage });
+            }
+
+            return Ok(user);
+        }
+
     }
 }
