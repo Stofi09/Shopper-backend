@@ -14,5 +14,7 @@ namespace WebApplication1.Models
 
         [Required]
         public string Password { get; set; }
+        public virtual Basket Basket { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }
